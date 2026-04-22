@@ -122,7 +122,7 @@ The program follows this simple flow:
 
 1. Install dependencies: pip install gspread google-auth
 2. Place your `creds.json` file in the project folder.
-3. Run the program:python3 run.py
+3. Run the program: python3 run.py
 
 
 ---
