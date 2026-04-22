@@ -4,15 +4,20 @@ from google.oauth2.service_account import Credentials
 # -----------------------------
 # Google Sheets API Setup
 # -----------------------------
+# Permissions needed to access Google Sheets
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
     ]
-
+# Load credentials from your JSON file
 CREDS = Credentials.from_service_account_file('creds.json')
+
+# Apply the permissions to the credentials
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+
+# Create a client to access Google Sheet
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 
 # -----------------------------
