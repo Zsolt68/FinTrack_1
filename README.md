@@ -34,15 +34,14 @@ Happy coding!
 # FinTrack – Personal Finance Tracker
 
 FinTrack is a simple Python application that helps users track their personal
-income and spending. All data is stored in a Google Sheets document, and the
-program can:
+income and spending. All data is stored in a Google Sheets document, and the program can:
 
 - View all transactions
 - Add a new transaction
 - View a simple financial summary
 
 This project was intentionally kept simple because it is my first Python
-application. My goal was to demonstrate clear understanding of Python basics,
+application. My goal was to demonstrate a clear understanding of Python basics,
 functions, loops, input validation, and working with external data using the
 gspread library.
 
@@ -104,17 +103,22 @@ I focused on clarity and readability rather than complexity.
 
 The program follows this simple flow:
 
-1. Start program  
-2. Load transactions  
-3. Display menu  
-4. User chooses an option  
-   - View transactions  
-   - Add transaction  
-   - View summary  
-   - Exit  
-5. Return to menu until user exits  
+The FinTrack program follows a simple, linear flow:
 
-(See flowchart image in repository.)
+1. Start the program
+2. Load transactions from Google Sheets
+3. Display main menu
+4. User selects an option:
+   - View Transactions → Display all rows
+   - Add Transaction → Ask for input → Save to sheet
+   - View Summary → Calculate totals → Display results
+   - Exit → End program
+5. After completing an action, return to the menu
+6. Program ends when the user chooses Exit
+
+This flow ensures the program is easy to use and follows a clear structure.  
+
+Insert flowchart image in here
 
 ---
 
@@ -129,12 +133,14 @@ The program follows this simple flow:
 
 ## Future Enhancements
 
-- Add filtering (by category, month, or type)
-- Add editing or deleting transactions
-- Add a “Categories” management menu
-- Write summary results back into the Summary tab
-- Add basic charts or graphs (optional)
-- Add error logging for debugging
+- Add filtering options (by category, date, or type)
+- Add editing or deleting existing transactions
+- Add a Categories management menu
+- Write summary results back into the Summary worksheet
+- Add charts or graphs for visual insights
+- Add data validation directly in Google Sheets
+- Add a Logs worksheet to track user actions
+- Add monthly or yearly reports
 
 ---
 
@@ -142,5 +148,5 @@ The program follows this simple flow:
 
 - Python documentation  
 - gspread documentation  
-- Code Institute template for Google Sheets API setup and Love Sandwiches Walkthrough Project.
+- Code Institute template for Google Sheets API setup and "Love Sandwiches" Walkthrough Project.
 
