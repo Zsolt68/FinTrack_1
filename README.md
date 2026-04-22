@@ -30,3 +30,117 @@ The deployment terminal is set to 80 columns by 24 rows. That means that each li
 ---
 
 Happy coding!
+
+# FinTrack – Personal Finance Tracker
+
+FinTrack is a simple Python application that helps users track their personal
+income and spending. All data is stored in a Google Sheets document, and the
+program can:
+
+- View all transactions
+- Add a new transaction
+- View a simple financial summary
+
+This project was intentionally kept simple because it is my first Python
+application. My goal was to demonstrate clear understanding of Python basics,
+functions, loops, input validation, and working with external data using the
+gspread library.
+
+---
+
+## Features
+
+### 1. View Transactions
+Displays all transactions stored in the Google Sheet in a simple list format.
+
+### 2. Add Transaction
+Allows the user to enter:
+- Date  
+- Description  
+- Amount  
+- Type (Debit or Credit)  
+- Category  
+
+The new transaction is added directly to the Google Sheet.
+
+### 3. View Summary
+Calculates:
+- Total Income  
+- Total Spending  
+- Net Balance  
+
+This gives the user a quick overview of their financial situation.
+
+---
+
+## Technologies Used
+
+- Python 3  
+- Google Sheets  
+- gspread library  
+- Google Cloud Service Account  
+
+---
+
+## How the Code Works
+
+The program connects to a Google Sheet named **FinTrack** using a service
+account. It reads and writes data to the **Transactions** worksheet.
+
+The code is structured into small, easy-to-understand functions:
+
+- `load_transactions()` – loads all data  
+- `view_transactions()` – prints transactions  
+- `add_transaction()` – adds a new row  
+- `view_summary()` – calculates totals  
+- `show_menu()` – displays the menu  
+- `main()` – runs the program loop  
+
+I focused on clarity and readability rather than complexity.
+
+---
+
+## Flowchart
+
+The program follows this simple flow:
+
+1. Start program  
+2. Load transactions  
+3. Display menu  
+4. User chooses an option  
+   - View transactions  
+   - Add transaction  
+   - View summary  
+   - Exit  
+5. Return to menu until user exits  
+
+(See flowchart image in repository.)
+
+---
+
+## How to Run
+
+1. Install dependencies: pip install gspread google-auth
+2. Place your `creds.json` file in the project folder.
+3. Run the program:python3 run.py
+
+
+---
+
+## Future Enhancements
+
+- Add filtering (by category, month, or type)
+- Add editing or deleting transactions
+- Add a “Categories” management menu
+- Write summary results back into the Summary tab
+- Add basic charts or graphs (optional)
+- Add error logging for debugging
+
+---
+
+## Credits
+
+- Python documentation  
+- gspread documentation  
+- Code Institute template for Google Sheets API setup and Love Sandwiches Walkthrough Project.
+
