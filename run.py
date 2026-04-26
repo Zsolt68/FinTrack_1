@@ -68,7 +68,14 @@ def view_transactions():
 # Print a footer line to make the output look clean
     print("\n-------------------------\n")
 
+# -----------------------------
+# Add a New Transaction
+# -----------------------------
 
+def add_transaction():
+    """Ask the user for transaction details and save them to Google Sheets."""
+
+    print("\n--- Add New Transaction ---\n")
 
 
 # -----------------------------
