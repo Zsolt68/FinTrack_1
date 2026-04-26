@@ -132,18 +132,37 @@ def view_summary():
         print("No transactions found.")
         return
 
-if __name__ == "__main__":
-    print("TEST: Running main block")
-    view_summary()
+    # Remove the header row so we only process actual transactions.
+    data_rows = rows[1:]
+
+    # Initialize totals for income and expenses.
+    total_income = 0
+    total_expense = 0
+
+    # Loop through each transaction row and accumulate totals.
+    for row in data_rows:
+        amount = float(row[2])     # Amount is in column 3
+        t_type = row[3]            # Type (Income/Expense) is in column 4
+
+        if t_type == "Income":
+            total_income = total_income + amount
+        elif t_type == "Expense":
+            total_expense = total_expense + amount
+
+    # Calculate the net balance (Income - Expense).
+    net_balance = total_income - total_expense
+
+    # Display the calculated summary to the user.
+    print(f"Total Income: €{total_income:.2f}")
+    print(f"Total Expense: €{total_expense:.2f}")
+    print(f"Net Balance: €{net_balance:.2f}\n")
+
 
 
 # -----------------------------
 # TEMPORARY TEST BLOCK
 # -----------------------------
 if __name__ == "__main__":
-    add_transaction()
+     view_summary()
 
-# -----------------------------
-# Print to confirm everything works
-# -----------------------------
 
