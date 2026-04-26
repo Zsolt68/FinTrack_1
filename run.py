@@ -43,6 +43,35 @@ summary_data = summary_ws.get_all_records()
 settings_data = settings_ws.get_all_records()
 
 # -----------------------------
+# View Transactions 
+# -----------------------------
+def view_transactions():
+    """Print all transactions in a simple list."""
+
+    # Print a header so the user knows what section they are viewing
+    print("\n--- All Transactions ---\n")
+
+# Call the load_transactions() function to get all rows from the Google Sheet
+    transactions = transactions_ws.get_all_records()
+
+ # If the list is empty, it means there are no transactions stored yet
+    if not transactions:
+        print("No transactions found.")
+        return # Exit the function early because there is nothing to display
+
+ # Loop through each transaction (each item is a dictionary)
+    for t in transactions:
+         # Print each field in a readable format
+        # The keys must match the column names in the FinTrack Google Sheet
+        print(f"{t['Date']} | {t['Description']} | {t['Amount']} | {t['Type']} | {t['Category']}")
+
+# Print a footer line to make the output look clean
+    print("\n-------------------------\n")
+
+
+
+
+# -----------------------------
 # Print to confirm everything works
 # -----------------------------
 print("TRANSACTIONS:")
