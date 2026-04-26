@@ -77,18 +77,29 @@ def add_transaction():
 
     print("\n--- Add New Transaction ---\n")
 
+ # Ask the user for the date of the transaction
+    date = input("Enter the date (DD/MM/YYYY): ").strip()
+
+    # Ask the user for a short description of the transaction
+    description = input("Enter a description: ").strip()
+
+    # Ask the user for the amount and validate it
+    amount_input = input("Enter the amount: ").strip()
+
+    # Basic validation: check if the amount is a number
+    try:
+        amount = float(amount_input)
+    except ValueError:
+        print("Invalid amount. Please enter a number.")
+        return  # Stop the function if invalid input is given
+
+# -----------------------------
+# TEMPORARY TEST BLOCK
+# -----------------------------
+if __name__ == "__main__":
+    add_transaction()
 
 # -----------------------------
 # Print to confirm everything works
 # -----------------------------
-print("TRANSACTIONS:")
-print(transactions_data)
 
-print("\nCATEGORIES:")
-print(categories_data)
-
-print("\nSUMMARY:")
-print(summary_data)
-
-print("\nSETTINGS:")
-print(settings_data)
