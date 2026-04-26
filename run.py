@@ -157,7 +157,29 @@ def view_summary():
     print(f"Total Expense: €{total_expense:.2f}")
     print(f"Net Balance: €{net_balance:.2f}\n")
 
+    # Calculate which category has the highest total spending.
+    # We only consider Expense rows for this calculation.
+    category_totals = {}
 
+    for row in data_rows:
+        amount = float(row[2])
+        t_type = row[3]
+        category = row[4]
+
+    if t_type == "Expense":
+        # Add amount to the category total
+        if category in category_totals:
+                category_totals[category] += amount
+        else:
+                category_totals[category] = amount
+
+# If there are any expenses, find the category with the highest total.
+    if category_totals:
+        top_category = max(category_totals, key=category_totals.get)
+        top_amount = category_totals[top_category]
+        print(f"Top Spending Category: {top_category} (€{top_amount:.2f})\n")
+    else:
+        print("No expenses recorded, so no top category.\n")
 
 # -----------------------------
 # TEMPORARY TEST BLOCK
