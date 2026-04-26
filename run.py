@@ -107,6 +107,18 @@ def add_transaction():
     # No strict validation here because categories can vary widely.
     category = input("Enter category: ").strip()
 
+    # Prepare the new transaction row in the correct order for FinTrack Google Sheets.
+    # The order must match the columns in the 'transactions' worksheet.
+    new_row = [date, description, amount, t_type, category]
+
+    # Append the new row to the Google Sheets 'transactions' worksheet.
+    # This saves the transaction permanently in your spreadsheet.
+    transactions_ws.append_row(new_row)
+
+    # Confirm to the user that the transaction was added successfully.
+    print("\nTransaction added successfully!\n")
+
+
 # -----------------------------
 # TEMPORARY TEST BLOCK
 # -----------------------------
