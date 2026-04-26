@@ -107,16 +107,34 @@ def add_transaction():
     # No strict validation here because categories can vary widely.
     category = input("Enter category: ").strip()
 
-    # Prepare the new transaction row in the correct order for FinTrack Google Sheets.
+    # Prepare the new transaction row in the correct order for the FinTrack Google Sheets.
     # The order must match the columns in the 'transactions' worksheet.
     new_row = [date, description, amount, t_type, category]
 
     # Append the new row to the Google Sheets 'transactions' worksheet.
-    # This saves the transaction permanently in your spreadsheet.
+    # This saves the transaction permanently in the'transactions'/FinTrack Google Sheets.
     transactions_ws.append_row(new_row)
 
     # Confirm to the user that the transaction was added successfully.
     print("\nTransaction added successfully!\n")
+
+def view_summary():
+    """Display a summary of all transactions stored in transactions/FinTrack Google Sheets."""
+
+    print("\n--- Summary of Transactions ---\n")
+
+    # Get all rows from the Google Sheets 'transactions' worksheet.
+    # Each row contains: [date, description, amount, type, category]
+    rows = transactions_ws.get_all_values()
+
+    # If there are no transactions (only header row), inform the user.
+    if len(rows) <= 1:
+        print("No transactions found.")
+        return
+
+if __name__ == "__main__":
+    print("TEST: Running main block")
+    view_summary()
 
 
 # -----------------------------
