@@ -100,6 +100,13 @@ def add_transaction():
     if t_type not in ["Income", "Expense"]:
         print("Invalid type. Please enter 'Income' or 'Expense'.")
         return
+
+
+    # Ask the user for the transaction category.
+    # This can be anything the user wants (e.g., Food, Rent, Salary, Transport).
+    # No strict validation here because categories can vary widely.
+    category = input("Enter category: ").strip()
+
 # -----------------------------
 # TEMPORARY TEST BLOCK
 # -----------------------------
