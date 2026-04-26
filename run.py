@@ -93,6 +93,13 @@ def add_transaction():
         print("Invalid amount. Please enter a number.")
         return  # Stop the function if invalid input is given
 
+ # Ask the user whether this is income or spending
+    t_type = input("Enter type (Income/Expense): ").strip().capitalize()
+
+    # Validate the type
+    if t_type not in ["Income", "Expense"]:
+        print("Invalid type. Please enter 'Income' or 'Expense'.")
+        return
 # -----------------------------
 # TEMPORARY TEST BLOCK
 # -----------------------------
