@@ -46,27 +46,58 @@ settings_data = settings_ws.get_all_records()
 # View Transactions 
 # -----------------------------
 def view_transactions():
-    """Print all transactions in a simple list."""
+    """Display all transactions stored in the Google Sheets 'transactions' worksheet."""
 
-    # Print a header so the user knows what section they are viewing
+# Print a blank line and a header so the user knows what section they are viewing
     print("\n--- All Transactions ---\n")
 
-# Call the load_transactions() function to get all rows from the Google Sheet
-    transactions = transactions_ws.get_all_records()
+    # Get all rows from the Google Sheets as a list of lists
+    rows = transactions_ws.get_all_values()
 
- # If the list is empty, it means there are no transactions stored yet
-    if not transactions:
+    # If only the header exists, there are no transactions
+    if len(rows) <= 1:
         print("No transactions found.")
-        return # Exit the function early because there is nothing to display
+        return # Exit early because there is nothing to display
 
- # Loop through each transaction (each item is a dictionary)
-    for t in transactions:
-         # Print each field in a readable format
-        # The keys must match the column names in the FinTrack Google Sheet
-        print(f"{t['Date']} | {t['Description']} | {t['Amount']} | {t['Type']} | {t['Category']}")
+    # Print the header row in a clean table formatted way
+    # Takes the first row from the transaction worksheet (index 0), which contains the column names
+    header = rows[0]
+    # Print each column name in a fixed-width format so the table looks aligned.
+# {header[0]:<12}  → left-align the "Date" column in a 12-character space
+# {header[1]:<20}  → left-align "Description" in a 20-character space
+# {header[2]:<10}  → left-align "Amount" in a 10-character space
+# {header[3]:<10}  → left-align "Type" in a 10-character space
+# {header[4]:<15}  → left-align "Category" in a 15-character space
+# The "|" characters visually separate the columns like a table.
+    print(f"{header[0]:<12} | {header[1]:<20} | {header[2]:<10} | {header[3]:<10} | {header[4]:<15}")
 
-# Print a footer line to make the output look clean
-    print("\n-------------------------\n")
+# Print a horizontal line made of 75 dashes.
+# This creates a clean visual separator between the header and the transaction rows.
+    print("-" * 75)
+
+    # Loop through each transaction row (skipping the header at index 0) and print each transaction row
+    for row in rows[1:]:
+    # Extract each column from the row for readability  
+        date = row[0]
+        description = row[1]
+        amount = row[2]
+        t_type = row[3]
+        category = row[4]
+# Prints a formatted transaction row in a clean, aligned table format to the screen.
+# Prints the transaction row with the same fixed-width formatting as the header.
+# f"{date:<12} = insert the value of date and left‑align the text inside a 12‑character wide space.
+# {description:<20} = insert description and left‑align in a 20‑character space.
+# €{amount:<9} = print a euro symbol before the amount and left‑align the amount in a 9‑character space.
+# {t_type:<10} = insert the transaction type (Income or Expense) and left‑align the amount in a 10‑character space.Gives it a fixed width so the next column lines up.
+# {category:<15}" = insert the category name and left‑align the amount in a 15‑character space.
+# | = a visual separator between columns, like a table.
+        print(f"{date:<12} | {description:<20} | €{amount:<9} | {t_type:<10} | {category:<15}")
+
+    print()  # Print blank line at the end
+
+if __name__ == "__main__":
+    view_transactions()
+
 
 # -----------------------------
 # Add a New Transaction
