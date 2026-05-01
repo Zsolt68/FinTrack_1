@@ -211,12 +211,64 @@ def view_summary():
         print(f"Top Spending Category: {top_category} (€{top_amount:.2f})\n")
     else:
         print("No expenses recorded, so no top category.\n")
+def main_menu():
+    """Display the main menu and handle user choices."""
+    
+    # Start an infinite loop so the menu keeps showing until the user chooses to exit
+    while True:
+        # Print the main menu options for the user
+        print("\n=== FinTrack Main Menu ===")
+        print("1. Add a new transaction")
+        print("2. View all transactions")
+        print("3. View summary")
+        print("4. Exit")
+
+        # Ask the user to enter a menu option and remove any extra spaces
+        choice = input("Enter your choice (1-4): ").strip()
+
+        # If the user selects option 1, call the function to add a new transaction
+        if choice == "1":
+            add_transaction()
+
+        # If the user selects option 2, call the function to display all transactions
+        elif choice == "2":
+            view_transactions()
+
+        # If the user selects option 3, call the function to show the summary report
+        elif choice == "3":
+            view_summary()
+
+        # If the user selects option 4, exit the loop and end the program
+        elif choice == "4":
+            print("Exiting FinTrack. Goodbye!")
+            break  # Break stops the while loop and ends the program
+
+        # If the user enters anything else, show an error message
+        else:
+            print("Invalid choice. Please enter a number between 1 and 4.")
+
+def main_menu():
+    """Display the main menu and handle user choices."""
+    
+    # Start an infinite loop so the menu keeps showing until the user chooses to exit
+    while True:
+        # Print the main menu options for the user
+        print("\n=== FinTrack Main Menu ===")
+        print("1. Add a new transaction")
+        print("2. View all transactions")
+        print("3. View summary")
+        print("4. Exit")
+
+        # Ask the user to enter a menu option and remove any extra spaces
+        choice = input("Enter your choice (1-4): ").strip()
+
+        
 
 
 # -----------------------------
 # TEMPORARY TEST BLOCK
 # -----------------------------
 if __name__ == "__main__":
-     view_summary()
+     main_menu()
 
 
