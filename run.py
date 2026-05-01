@@ -265,7 +265,15 @@ def main_menu():
         # If the user selects option 1, call the function to add a new transaction
         if choice == "1":
             add_transaction()
-
+        elif choice == "2":
+            view_transactions()
+        elif choice == "3":
+            view_summary()
+        elif choice == "4":
+            print("Exiting FinTrack. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 4.")
         
 
 
