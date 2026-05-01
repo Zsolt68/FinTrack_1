@@ -261,6 +261,10 @@ def main_menu():
 
         # Ask the user to enter a menu option and remove any extra spaces
         choice = input("Enter your choice (1-4): ").strip()
+        
+        # If the user selects option 1, call the function to add a new transaction
+        if choice == "1":
+            add_transaction()
 
         
 
