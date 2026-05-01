@@ -42,7 +42,58 @@ categories_data = categories_ws.get_all_records()
 summary_data = summary_ws.get_all_records()
 settings_data = settings_ws.get_all_records()
 
+
 # -----------------------------
+# Add a New Transaction
+# -----------------------------
+
+def add_transaction():
+    """Ask the user for transaction details and save them to Google Sheets."""
+
+    print("\n--- Add New Transaction ---\n")
+
+ # Ask the user for the date of the transaction
+    date = input("Enter the date (DD/MM/YYYY): ").strip()
+
+    # Ask the user for a short description of the transaction
+    description = input("Enter a description: ").strip()
+
+    # Ask the user for the amount and validate it
+    amount_input = input("Enter the amount: ").strip()
+
+    # Basic validation: check if the amount is a number
+    try:
+        amount = float(amount_input)
+    except ValueError:
+        print("Invalid amount. Please enter a number.")
+        return  # Stop the function if invalid input is given
+
+ # Ask the user whether this is income or spending
+    t_type = input("Enter type (Income/Expense): ").strip().capitalize()
+
+    # Validate the type
+    if t_type not in ["Income", "Expense"]:
+        print("Invalid type. Please enter 'Income' or 'Expense'.")
+        return
+
+
+    # Ask the user for the transaction category.
+    # This can be anything the user wants (e.g., Food, Rent, Salary, Transport).
+    # No strict validation here because categories can vary widely.
+    category = input("Enter category: ").strip()
+
+    # Prepare the new transaction row in the correct order for the FinTrack Google Sheets.
+    # The order must match the columns in the 'transactions' worksheet.
+    new_row = [date, description, amount, t_type, category]
+
+    # Append the new row to the Google Sheets 'transactions' worksheet.
+    # This saves the transaction permanently in the'transactions'/FinTrack Google Sheets.
+    transactions_ws.append_row(new_row)
+
+    # Confirm to the user that the transaction was added successfully.
+    print("\nTransaction added successfully!\n")
+
+    # -----------------------------
 # View Transactions 
 # -----------------------------
 def view_transactions():
@@ -97,57 +148,6 @@ def view_transactions():
 
 if __name__ == "__main__":
     view_transactions()
-
-
-# -----------------------------
-# Add a New Transaction
-# -----------------------------
-
-def add_transaction():
-    """Ask the user for transaction details and save them to Google Sheets."""
-
-    print("\n--- Add New Transaction ---\n")
-
- # Ask the user for the date of the transaction
-    date = input("Enter the date (DD/MM/YYYY): ").strip()
-
-    # Ask the user for a short description of the transaction
-    description = input("Enter a description: ").strip()
-
-    # Ask the user for the amount and validate it
-    amount_input = input("Enter the amount: ").strip()
-
-    # Basic validation: check if the amount is a number
-    try:
-        amount = float(amount_input)
-    except ValueError:
-        print("Invalid amount. Please enter a number.")
-        return  # Stop the function if invalid input is given
-
- # Ask the user whether this is income or spending
-    t_type = input("Enter type (Income/Expense): ").strip().capitalize()
-
-    # Validate the type
-    if t_type not in ["Income", "Expense"]:
-        print("Invalid type. Please enter 'Income' or 'Expense'.")
-        return
-
-
-    # Ask the user for the transaction category.
-    # This can be anything the user wants (e.g., Food, Rent, Salary, Transport).
-    # No strict validation here because categories can vary widely.
-    category = input("Enter category: ").strip()
-
-    # Prepare the new transaction row in the correct order for the FinTrack Google Sheets.
-    # The order must match the columns in the 'transactions' worksheet.
-    new_row = [date, description, amount, t_type, category]
-
-    # Append the new row to the Google Sheets 'transactions' worksheet.
-    # This saves the transaction permanently in the'transactions'/FinTrack Google Sheets.
-    transactions_ws.append_row(new_row)
-
-    # Confirm to the user that the transaction was added successfully.
-    print("\nTransaction added successfully!\n")
 
 def view_summary():
     """Display a summary of all transactions stored in transactions/FinTrack Google Sheets."""
@@ -211,6 +211,7 @@ def view_summary():
         print(f"Top Spending Category: {top_category} (€{top_amount:.2f})\n")
     else:
         print("No expenses recorded, so no top category.\n")
+
 
 # -----------------------------
 # TEMPORARY TEST BLOCK
