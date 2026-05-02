@@ -170,6 +170,14 @@ def view_summary():
     total_income = 0
     total_expense = 0
 
+    # Counters for number of income and expense transactions.
+    income_count = 0
+    expense_count = 0
+
+    # List to store all expense amounts (used for average + highest expense).
+    expense_values = []
+
+
     # Loop through each transaction row and accumulate totals.
     for row in data_rows:
         amount = float(row[2])     # Amount is in column 3
@@ -177,8 +185,11 @@ def view_summary():
 
         if t_type == "Income":
             total_income = total_income + amount
+            income_count += 1       # Count income transactions
         elif t_type == "Expense":
             total_expense = total_expense + amount
+            expense_count += 1     # Count expense transactions
+            expense_values.append(amount)  # Store for later calculations   
 
     # Calculate the net balance (Income - Expense).
     net_balance = total_income - total_expense
@@ -188,6 +199,8 @@ def view_summary():
     print(f"Total Expense: €{total_expense:.2f}")
     print(f"Net Balance: €{net_balance:.2f}\n")
 
+
+    
     # Calculate which category has the highest total spending.
     # We only consider Expense rows for this calculation.
     category_totals = {}
@@ -283,5 +296,6 @@ def main_menu():
 # -----------------------------
 if __name__ == "__main__":
      main_menu()
+
 
 
