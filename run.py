@@ -152,7 +152,7 @@ if __name__ == "__main__":
 def view_summary():
     """Display a summary of all transactions stored in transactions/FinTrack Google Sheets."""
 
-    print("\n--- Summary of Transactions ---\n")
+    print("\n=== Financial Summary ===\n")
 
     # Get all rows from the Google Sheets 'transactions' worksheet.
     # Each row contains: [date, description, amount, type, category]
@@ -211,6 +211,7 @@ def view_summary():
         print(f"Top Spending Category: {top_category} (€{top_amount:.2f})\n")
     else:
         print("No expenses recorded, so no top category.\n")
+        
 def main_menu():
     """Display the main menu and handle user choices."""
     
