@@ -199,6 +199,11 @@ def view_summary():
     print(f"Total Expense: €{total_expense:.2f}")
     print(f"Net Balance: €{net_balance:.2f}\n")
 
+# --- Additional Summary Metrics ---
+
+    # Total number of transactions recorded.
+    total_transactions = len(data_rows)
+    print(f"Number of Transactions: {total_transactions}")
 
     
     # Calculate which category has the highest total spending.
@@ -210,12 +215,13 @@ def view_summary():
         t_type = row[3]
         category = row[4]
 
-    if t_type == "Expense":
+        if t_type == "Expense":
         # Add amount to the category total
-        if category in category_totals:
+            if category in category_totals:
                 category_totals[category] += amount
-        else:
+            else:
                 category_totals[category] = amount
+
 
 # If there are any expenses, find the category with the highest total.
     if category_totals:
