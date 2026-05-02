@@ -199,11 +199,15 @@ def view_summary():
     print(f"Total Expense: €{total_expense:.2f}")
     print(f"Net Balance: €{net_balance:.2f}\n")
 
-# --- Additional Summary Metrics ---
+    # --- Additional Summary Metrics ---
 
     # Total number of transactions recorded.
     total_transactions = len(data_rows)
     print(f"Number of Transactions: {total_transactions}")
+
+    # Display how many were income and how many were expenses.
+    print(f"Income Count:           {income_count}")
+    print(f"Expense Count:          {expense_count}")
 
     
     # Calculate which category has the highest total spending.
