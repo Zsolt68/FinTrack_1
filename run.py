@@ -1,5 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
+import os
+import time
 
 # -----------------------------
 # Google Sheets API Setup
@@ -41,6 +43,39 @@ transactions_data = transactions_ws.get_all_records()
 categories_data = categories_ws.get_all_records()
 summary_data = summary_ws.get_all_records()
 settings_data = settings_ws.get_all_records()
+
+# ----------------------------------------------------
+# Clear screen and loading animation functions
+# ----------------------------------------------------
+
+def clear_screen():
+    """
+    Clear the terminal screen.
+    Works on Windows, macOS, Linux, and Heroku.
+    """
+    # Use the operating system's built‑in clear command.
+    # On Windows the command is "cls", on macOS/Linux/Heroku it is "clear".
+    # os.name returns "nt" on Windows, so we choose the correct command.
+    os.system("cls" if os.name == "nt" else "clear")
+
+
+def loading_animation(message="Loading"):
+    """
+    Display a simple loading animation with a custom message.
+    Shows the message with 1, 2, and 3 dots, then clears the screen.
+    """
+    # Loop three times to create three animation steps.
+    for i in range(3):
+
+        # Print the message followed by a growing number of dots.
+        # (i + 1) ensures the dots go: 1 dot → 2 dots → 3 dots.
+        print(f"{message}{'.' * (i + 1)}")
+
+        # Pause for 0.3 seconds so the animation is visible to the user.
+        time.sleep(0.5)
+
+        # Clear the screen after each step to create the animation effect.
+        clear_screen()
 
 
 # -----------------------------
@@ -264,7 +299,15 @@ def view_summary():
 
 
 def main_menu():
-   
+    """Display the main menu and handle user choices."""
+
+    # Clear the terminal screen before showing anything.
+    # This ensures the program starts with a clean, uncluttered interface.
+    clear_screen()
+
+    # Show a short loading animation before displaying the welcome banner.
+    # This gives the effect of the program "starting up" like a real application.
+    loading_animation("Starting FinTrack")
 
     # Welcome banner (prints once when the program starts)
     print("\n====================================")
@@ -273,7 +316,7 @@ def main_menu():
     print("              v1.0")
     print("====================================\n")
 
-    """Display the main menu and handle user choices."""
+    
     # Start an infinite loop so the menu keeps showing until the user chooses to exit
     while True:
         # Print the main menu options for the user
@@ -288,6 +331,8 @@ def main_menu():
 
         # If the user selects option 1, call the function to add a new transaction
         if choice == "1":
+            # Clear the screen before showing the add transaction form.
+            clear_screen()
             add_transaction()
 
         # If the user selects option 2, call the function to display all transactions
