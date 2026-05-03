@@ -217,14 +217,19 @@ def view_summary():
     print(f"Income Count:           {income_count}")
     print(f"Expense Count:          {expense_count}")
 
-    # Calculate average expense only if at least one expense exists.
+    # Calculate average expense if there are any expenses.
     if expense_values:
-        # Average = total of expenses divided by number of expense entries.
         avg_expense = sum(expense_values) / len(expense_values)
         print(f"Average Expense:        €{avg_expense:.2f}")
+
+        # Highest single expense.
+        highest_expense = max(expense_values)
+        print(f"Highest Expense:        €{highest_expense:.2f}")
     else:
-        # If no expenses exist, avoid division by zero.
-        print("Average Expense:        No expenses recorded.")
+        print("Average Expense:        N/A")
+        print("Highest Expense:        N/A")
+
+    print()  # Blank line for spacing
 
     # Dictionary to store total spending per category.
     # Calculate which category has the highest total spending.
@@ -251,6 +256,7 @@ def view_summary():
         top_amount = category_totals[top_category]
         print(f"Top Spending Category: {top_category} (€{top_amount:.2f})\n")
     else:
+        # If no expenses exist, no category can be ranked.
         print("No expenses recorded, so no top category.\n")
 
 
