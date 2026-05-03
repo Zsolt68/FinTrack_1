@@ -48,6 +48,7 @@ settings_data = settings_ws.get_all_records()
 # Clear screen and loading animation functions
 # ----------------------------------------------------
 
+
 def clear_screen():
     """
     Clear the terminal screen.
@@ -112,28 +113,30 @@ def add_transaction():
         return
 
     # Ask the user for the transaction category.
-    # This can be anything the user wants (e.g., Food, Rent, Salary, Transport).
+    # This can be anything the user wants (e.g.,Food,Rent,Salary,Transport).
     # No strict validation here because categories can vary widely.
     category = input("Enter category: ").strip()
 
-    # Prepare the new transaction row in the correct order for the FinTrack Google Sheets.
-    # The order must match the columns in the 'transactions' worksheet.
+    # Prepare the new transaction row in the correct column order.
+    # Must match the 'transactions' worksheet layout.
+
     new_row = [date, description, amount, t_type, category]
 
     # Append the new row to the Google Sheets 'transactions' worksheet.
-    # This saves the transaction permanently in the'transactions'/FinTrack Google Sheets.
+    # This saves the transaction permanently in the'transactions' worsheet.
     transactions_ws.append_row(new_row)
 
     # Confirm to the user that the transaction was added successfully.
-    print("\nTransaction added successfully!\n")  
+    print("\nTransaction added successfully!\n")
 
 # -----------------------------
 # View Transactions
 # -----------------------------
-def view_transactions():
-    """Display all transactions stored in the Google Sheets 'transactions' worksheet."""
 
-    # Print a blank line and a header so the user knows what section they are viewing
+
+def view_transactions():
+    # Display all transactions stored in the 'transactions' worksheet.
+    # Print a blank line and a header.
     print("\n--- All Transactions ---\n")
 
     # Get all rows from the Google Sheets as a list of lists
@@ -145,24 +148,28 @@ def view_transactions():
         return  # Exit early because there is nothing to display
 
     # Print the header row in a clean table formatted way
-    # Takes the first row from the transaction worksheet (index 0), which contains the column names
+    # Get the first row (index 0) from the sheet; it contains the column names.
     header = rows[0]
-    # Print each column name in a fixed-width format so the table looks aligned.
+    # Print each column name in fixed width so the table stays aligned.
     # {header[0]:<12}  → left-align the "Date" column in a 12-character space
     # {header[1]:<20}  → left-align "Description" in a 20-character space
     # {header[2]:<10}  → left-align "Amount" in a 10-character space
     # {header[3]:<10}  → left-align "Type" in a 10-character space
     # {header[4]:<15}  → left-align "Category" in a 15-character space
     # The "|" characters visually separate the columns like a table.
+    # Print header columns with fixed widths for alignment.
     print(
-        f"{header[0]:<12} | {header[1]:<20} | {header[2]:<10} | {header[3]:<10} | {header[4]:<15}"
-    )
+        f"{header[0]:<12} | {header[1]:<20} | {header[2]:<10} | "
+        f"{header[3]:<10} | {header[4]:<15}"
+        )
 
     # Print a horizontal line made of 75 dashes.
-    # This creates a clean visual separator between the header and the transaction rows.
+    # Creates a separator between the header and the transaction rows.
+
     print("-" * 75)
 
-    # Loop through each transaction row (skipping the header at index 0) and print each transaction row
+    # Loop through rows (skip header at index 0) and print each transaction.
+
     for row in rows[1:]:
         # Extract each column from the row for readability
         date = row[0]
@@ -170,19 +177,22 @@ def view_transactions():
         amount = row[2]
         t_type = row[3]
         category = row[4]
-        # Prints a formatted transaction row in a clean, aligned table format to the screen.
-        # Prints the transaction row with the same fixed-width formatting as the header.
-        # f"{date:<12} = insert the value of date and left‑align the text inside a 12‑character wide space.
-        # {description:<20} = insert description and left‑align in a 20‑character space.
-        # €{amount:<9} = print a euro symbol before the amount and left‑align the amount in a 9‑character space.
-        # {t_type:<10} = insert the transaction type (Income or Expense) and left‑align the amount in a 10‑character space.Gives it a fixed width so the next column lines up.
-        # {category:<15}" = insert the category name and left‑align the amount in a 15‑character space.
+        # Print a formatted transaction row in an aligned table view.
+        # Print the transaction row using the header's fixed-width format.
+        # f"{date:<12} = inserts the date and left-aligns it in 12 characters.
+        # {description:<20}  inserts description left‑aligned in 20‑characters.
+        # €{amount:<9} = prints € and left-aligns the amount in a 9-char field.
+        # {t_type:<10} = prints the transaction type left‑aligned in 10 chars.
+        # {category:<15}" = prints the category left‑aligned in 15 chars.
         # | = a visual separator between columns, like a table.
         print(
-            f"{date:<12} | {description:<20} | €{amount:<9} | {t_type:<10} | {category:<15}"
+            f"{date:<12} | {description:<20} | €{amount:<9} | "
+            f"{t_type:<10} | {category:<15}"
         )
 
-    print()  # Print blank line at the end
+        print()  # Print blank line at the end
+
+# Run view_transactions only when this file is executed directly.
 
 
 if __name__ == "__main__":
@@ -190,7 +200,7 @@ if __name__ == "__main__":
 
 
 def view_summary():
-    """Display a summary of all transactions stored in transactions/FinTrack Google Sheets."""
+    # Display a summary of all transactions stored in transactions worksheet.
 
     print("\n=== Financial Summary ===\n")
 
@@ -223,12 +233,12 @@ def view_summary():
         t_type = row[3]  # Type (Income/Expense) is in column 4
 
         if t_type == "Income":
-            total_income = total_income + amount # Add to total income.
+            total_income = total_income + amount  # Add to total income.
             income_count += 1  # Count income transactions
         elif t_type == "Expense":
-            total_expense = total_expense + amount # Add to total expenses.
+            total_expense = total_expense + amount  # Add to total expenses.
             expense_count += 1  # Count expense transactions
-            expense_values.append(amount)  # Store expense for later calculations
+            expense_values.append(amount)  # Save expense for later calc
 
     # Calculate the net balance (Income - Expense).
     net_balance = total_income - total_expense
@@ -240,11 +250,11 @@ def view_summary():
     # Calculate which category has the highest total spending.
     # We only consider Expense rows for this calculation.
     category_totals = {}
-    
-    # Loop through all transactions again to accumulate category totals for expenses.
+    # Loop through transactions to accumulate expense totals per category.
+
     for row in data_rows:
         amount = float(row[2])  # Amount value from the row/"Amount" column.
-        t_type = row[3]  # Transaction type (Income/Expense) from the row/"Type" column.
+        t_type = row[3]  # Transaction type (Income/Expense) from the row.
         category = row[4]  # "Category" column.
 
         if t_type == "Expense":
@@ -253,7 +263,6 @@ def view_summary():
                 category_totals[category] += amount
             else:
                 category_totals[category] = amount
-                
     # ---------------------------------------------------------
     # FULLY ALIGNED SUMMARY OUTPUT (using f‑strings)
     # ---------------------------------------------------------
@@ -268,12 +277,11 @@ def view_summary():
     # Print transaction counts with aligned labels.
     print(f"{'Number of Transactions:':25} {total_transactions}")
     print(f"{'Income Count:':25} {income_count}")
-    print(f"{'Expense Count:':25} {expense_count}")    
-    
-    # If there are any expenses, calculate average expense 
+    print(f"{'Expense Count:':25} {expense_count}")
+
+    # If there are any expenses, calculate average expense
     if expense_values:
         avg_expense = sum(expense_values) / len(expense_values)
-       
         # Highest single expense.
         highest_expense = max(expense_values)
         print(f"{'Average Expense:':25} €{avg_expense:,.2f}")
@@ -285,14 +293,14 @@ def view_summary():
         print(f"{'Highest Expense:':25} N/A")
 
     print()  # Blank line for spacing
-       
 
     # If there are any expenses, find the category with the highest total.
     if category_totals:
         # Find the category with the largest total expense.
         top_category = max(category_totals, key=category_totals.get)
-        top_amount = category_totals[top_category]  # Total spent in that category.
-        print(f"{'Top Spending Category:':25} {top_category} (€{top_amount:,.2f})\n")
+        top_amount = category_totals[top_category]  # Total spent in that cat.
+        print(f"{'Top Spending Category:':25} {top_category} "
+              f"(€{top_amount:,.2f})\n")
     else:
         # If no expenses exist, no category can be ranked.
         print(f"{'Top Spending Category:':25} N/A\n")
@@ -306,7 +314,7 @@ def main_menu():
     clear_screen()
 
     # Show a short loading animation before displaying the welcome banner.
-    # This gives the effect of the program "starting up" like a real application.
+    # This gives the effect of the program "starting up" like a real app.
     loading_animation("Starting FinTrack")
 
     # Welcome banner (prints once when the program starts)
@@ -315,9 +323,8 @@ def main_menu():
     print("   Your Personal Finance Tracker")
     print("              v1.0")
     print("====================================\n")
+    # Start an infinite loop to keep showing the menu until the user exits.
 
-    
-    # Start an infinite loop so the menu keeps showing until the user chooses to exit
     while True:
         # Print the main menu options for the user
         print("\n=== FinTrack Main Menu ===")
@@ -329,19 +336,20 @@ def main_menu():
         # Ask the user to enter a menu option and remove any extra spaces
         choice = input("Enter your choice (1-4): ").strip()
 
-        # If the user selects option 1, call the function to add a new transaction.
+        # If the user selects option 1, call the function to add a new trans.
         if choice == "1":
             # Clear the screen before showing the add transaction form.
             clear_screen()
             add_transaction()
 
-        # If the user selects option 2, call the function to display all transactions.
+        # If the user selects option 2, call the function to display all trans.
         elif choice == "2":
             # Clear the screen before displaying the transaction table.
             clear_screen()
             view_transactions()
 
-        # If the user selects option 3, call the function to show the financial summary report.
+        # If the user selects option 3, show the financial summary report.
+
         elif choice == "3":
             # Clear the screen before displaying the summary report.
             clear_screen()
@@ -349,7 +357,7 @@ def main_menu():
 
         # If the user selects option 4, exit the loop and end/exit the program.
         elif choice == "4":
-             # Clear the screen before showing the goodbye banner.
+            # Clear the screen before showing the goodbye banner.
             clear_screen()
 
             # Goodbye banner shown when the user exits the program.
@@ -365,8 +373,8 @@ def main_menu():
         else:
             print("Invalid choice. Please enter a number between 1 and 4.")
 
-# -----------------------------
-# TEMPORARY TEST BLOCK
-# -----------------------------
+
+# Run the main menu when the file is executed directly.
+
 if __name__ == "__main__":
     main_menu()
