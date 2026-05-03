@@ -187,55 +187,28 @@ def view_summary():
 
     # Loop through each transaction row and accumulate totals.
     for row in data_rows:
-        amount = float(row[2])  # Amount is in column 3
+        amount = float(row[2])  # Amount is in column 3, convert it to a float.
         t_type = row[3]  # Type (Income/Expense) is in column 4
 
         if t_type == "Income":
-            total_income = total_income + amount
+            total_income = total_income + amount # Add to total income.
             income_count += 1  # Count income transactions
         elif t_type == "Expense":
-            total_expense = total_expense + amount
+            total_expense = total_expense + amount # Add to total expenses.
             expense_count += 1  # Count expense transactions
-            expense_values.append(amount)  # Store for later calculations
+            expense_values.append(amount)  # Store expense for later calculations
 
     # Calculate the net balance (Income - Expense).
     net_balance = total_income - total_expense
 
-    # Display the calculated summary to the user.
-    print(f"Total Income: €{total_income:.2f}")
-    print(f"Total Expense: €{total_expense:.2f}")
-    print(f"Net Balance: €{net_balance:.2f}\n")
-
-    # --- Additional Summary Metrics ---
-    # These metrics extend the summary with counts, averages, and category analysis.
-
     # Total number of transactions recorded (all rows except header).
     total_transactions = len(data_rows)
-    print(f"Number of Transactions: {total_transactions}")
-
-    # Display how many transactions were income and how many were expenses.
-    print(f"Income Count:           {income_count}")
-    print(f"Expense Count:          {expense_count}")
-
-    # Calculate average expense if there are any expenses.
-    if expense_values:
-        avg_expense = sum(expense_values) / len(expense_values)
-        print(f"Average Expense:        €{avg_expense:.2f}")
-
-        # Highest single expense.
-        highest_expense = max(expense_values)
-        print(f"Highest Expense:        €{highest_expense:.2f}")
-    else:
-        print("Average Expense:        N/A")
-        print("Highest Expense:        N/A")
-
-    print()  # Blank line for spacing
 
     # Dictionary to store total spending per category.
     # Calculate which category has the highest total spending.
     # We only consider Expense rows for this calculation.
     category_totals = {}
-
+    
     # Loop through all transactions again to accumulate category totals for expenses.
     for row in data_rows:
         amount = float(row[2])  # Amount value from the row/"Amount" column.
@@ -248,16 +221,49 @@ def view_summary():
                 category_totals[category] += amount
             else:
                 category_totals[category] = amount
+                
+    # ---------------------------------------------------------
+    # FULLY ALIGNED SUMMARY OUTPUT (using f‑strings)
+    # ---------------------------------------------------------
+
+    print("\n=== Financial Summary ===\n")
+
+    # Print income, expense, and net balance with aligned labels.
+    print(f"{'Total Income:':25} €{total_income:,.2f}")
+    print(f"{'Total Expense:':25} €{total_expense:,.2f}")
+    print(f"{'Net Balance:':25} €{net_balance:,.2f}\n")
+
+    # Print transaction counts with aligned labels.
+    print(f"{'Number of Transactions:':25} {total_transactions}")
+    print(f"{'Income Count:':25} {income_count}")
+    print(f"{'Expense Count:':25} {expense_count}")    
+    
+    # If there are any expenses, calculate average expense 
+    if expense_values:
+        avg_expense = sum(expense_values) / len(expense_values)
+       
+        # Highest single expense.
+        highest_expense = max(expense_values)
+        print(f"{'Average Expense:':25} €{avg_expense:,.2f}")
+        print(f"{'Highest Expense:':25} €{highest_expense:,.2f}")
+
+    else:
+        # If no expenses exist, show N/A for these fields.
+        print(f"{'Average Expense:':25} N/A")
+        print(f"{'Highest Expense:':25} N/A")
+
+    print()  # Blank line for spacing
+       
 
     # If there are any expenses, find the category with the highest total.
     if category_totals:
         # Find the category with the largest total expense.
         top_category = max(category_totals, key=category_totals.get)
-        top_amount = category_totals[top_category]
-        print(f"Top Spending Category: {top_category} (€{top_amount:.2f})\n")
+        top_amount = category_totals[top_category]  # Total spent in that category.
+        print(f"{'Top Spending Category:':25} {top_category} (€{top_amount:,.2f})\n")
     else:
         # If no expenses exist, no category can be ranked.
-        print("No expenses recorded, so no top category.\n")
+        print(f"{'Top Spending Category:':25} N/A\n")
 
 
 def main_menu():
