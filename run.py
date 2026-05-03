@@ -47,7 +47,6 @@ settings_data = settings_ws.get_all_records()
 # Add a New Transaction
 # -----------------------------
 
-
 def add_transaction():
     """Ask the user for transaction details and save them to Google Sheets."""
 
@@ -91,11 +90,9 @@ def add_transaction():
     transactions_ws.append_row(new_row)
 
     # Confirm to the user that the transaction was added successfully.
-    print("\nTransaction added successfully!\n")
+    print("\nTransaction added successfully!\n")  
 
-    # -----------------------------
-
-
+# -----------------------------
 # View Transactions
 # -----------------------------
 def view_transactions():
@@ -267,8 +264,16 @@ def view_summary():
 
 
 def main_menu():
-    """Display the main menu and handle user choices."""
+   
 
+    # Welcome banner (prints once when the program starts)
+    print("\n====================================")
+    print("         Welcome to FinTrack")
+    print("   Your Personal Finance Tracker")
+    print("              v1.0")
+    print("====================================\n")
+
+    """Display the main menu and handle user choices."""
     # Start an infinite loop so the menu keeps showing until the user chooses to exit
     while True:
         # Print the main menu options for the user
@@ -301,36 +306,6 @@ def main_menu():
         # If the user enters anything else, show an error message
         else:
             print("Invalid choice. Please enter a number between 1 and 4.")
-
-
-def main_menu():
-    """Display the main menu and handle user choices."""
-
-    # Start an infinite loop so the menu keeps showing until the user chooses to exit
-    while True:
-        # Print the main menu options for the user
-        print("\n=== FinTrack Main Menu ===")
-        print("1. Add a new transaction")
-        print("2. View all transactions")
-        print("3. View summary")
-        print("4. Exit")
-
-        # Ask the user to enter a menu option and remove any extra spaces
-        choice = input("Enter your choice (1-4): ").strip()
-
-        # If the user selects option 1, call the function to add a new transaction
-        if choice == "1":
-            add_transaction()
-        elif choice == "2":
-            view_transactions()
-        elif choice == "3":
-            view_summary()
-        elif choice == "4":
-            print("Exiting FinTrack. Goodbye!")
-            break
-        else:
-            print("Invalid choice. Please enter a number between 1 and 4.")
-
 
 # -----------------------------
 # TEMPORARY TEST BLOCK
