@@ -71,8 +71,8 @@ def loading_animation(message="Loading"):
         # (i + 1) ensures the dots go: 1 dot → 2 dots → 3 dots.
         print(f"{message}{'.' * (i + 1)}")
 
-        # Pause for 0.3 seconds so the animation is visible to the user.
-        time.sleep(0.5)
+        # Pause for 1.0 seconds so the animation is visible to the user.
+        time.sleep(1.0)
 
         # Clear the screen after each step to create the animation effect.
         clear_screen()
@@ -329,26 +329,39 @@ def main_menu():
         # Ask the user to enter a menu option and remove any extra spaces
         choice = input("Enter your choice (1-4): ").strip()
 
-        # If the user selects option 1, call the function to add a new transaction
+        # If the user selects option 1, call the function to add a new transaction.
         if choice == "1":
             # Clear the screen before showing the add transaction form.
             clear_screen()
             add_transaction()
 
-        # If the user selects option 2, call the function to display all transactions
+        # If the user selects option 2, call the function to display all transactions.
         elif choice == "2":
+            # Clear the screen before displaying the transaction table.
+            clear_screen()
             view_transactions()
 
-        # If the user selects option 3, call the function to show the summary report
+        # If the user selects option 3, call the function to show the financial summary report.
         elif choice == "3":
+            # Clear the screen before displaying the summary report.
+            clear_screen()
             view_summary()
 
-        # If the user selects option 4, exit the loop and end the program
+        # If the user selects option 4, exit the loop and end/exit the program.
         elif choice == "4":
-            print("Exiting FinTrack. Goodbye!")
+             # Clear the screen before showing the goodbye banner.
+            clear_screen()
+
+            # Goodbye banner shown when the user exits the program.
+            print("====================================")
+            print("       Thank you for using")
+            print("             FinTrack")
+            print("          See you soon!")
+            print("====================================\n")
+
             break  # Break stops the while loop and ends the program
 
-        # If the user enters anything else, show an error message
+        # If the user enters invalid menu choices, show an error message
         else:
             print("Invalid choice. Please enter a number between 1 and 4.")
 
