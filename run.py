@@ -9,10 +9,10 @@ from google.oauth2.service_account import Credentials
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
+    "https://www.googleapis.com/auth/drive",
+]
 # Load credentials from your JSON file
-CREDS = Credentials.from_service_account_file('creds.json')
+CREDS = Credentials.from_service_account_file("creds.json")
 
 # Apply the permissions to the credentials
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -23,7 +23,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 # -----------------------------
 # Open the FinTrack Google Sheet
 # -----------------------------
-SHEET = GSPREAD_CLIENT.open('FinTrack')
+SHEET = GSPREAD_CLIENT.open("FinTrack")
 
 # -----------------------------
 # Load each worksheet
@@ -47,12 +47,13 @@ settings_data = settings_ws.get_all_records()
 # Add a New Transaction
 # -----------------------------
 
+
 def add_transaction():
     """Ask the user for transaction details and save them to Google Sheets."""
 
     print("\n--- Add New Transaction ---\n")
 
- # Ask the user for the date of the transaction
+    # Ask the user for the date of the transaction
     date = input("Enter the date (DD/MM/YYYY): ").strip()
 
     # Ask the user for a short description of the transaction
@@ -68,14 +69,13 @@ def add_transaction():
         print("Invalid amount. Please enter a number.")
         return  # Stop the function if invalid input is given
 
- # Ask the user whether this is income or spending
+    # Ask the user whether this is income or spending
     t_type = input("Enter type (Income/Expense): ").strip().capitalize()
 
     # Validate the type
     if t_type not in ["Income", "Expense"]:
         print("Invalid type. Please enter 'Income' or 'Expense'.")
         return
-
 
     # Ask the user for the transaction category.
     # This can be anything the user wants (e.g., Food, Rent, Salary, Transport).
@@ -94,12 +94,14 @@ def add_transaction():
     print("\nTransaction added successfully!\n")
 
     # -----------------------------
-# View Transactions 
+
+
+# View Transactions
 # -----------------------------
 def view_transactions():
     """Display all transactions stored in the Google Sheets 'transactions' worksheet."""
 
-# Print a blank line and a header so the user knows what section they are viewing
+    # Print a blank line and a header so the user knows what section they are viewing
     print("\n--- All Transactions ---\n")
 
     # Get all rows from the Google Sheets as a list of lists
@@ -108,46 +110,52 @@ def view_transactions():
     # If only the header exists, there are no transactions
     if len(rows) <= 1:
         print("No transactions found.")
-        return # Exit early because there is nothing to display
+        return  # Exit early because there is nothing to display
 
     # Print the header row in a clean table formatted way
     # Takes the first row from the transaction worksheet (index 0), which contains the column names
     header = rows[0]
     # Print each column name in a fixed-width format so the table looks aligned.
-# {header[0]:<12}  → left-align the "Date" column in a 12-character space
-# {header[1]:<20}  → left-align "Description" in a 20-character space
-# {header[2]:<10}  → left-align "Amount" in a 10-character space
-# {header[3]:<10}  → left-align "Type" in a 10-character space
-# {header[4]:<15}  → left-align "Category" in a 15-character space
-# The "|" characters visually separate the columns like a table.
-    print(f"{header[0]:<12} | {header[1]:<20} | {header[2]:<10} | {header[3]:<10} | {header[4]:<15}")
+    # {header[0]:<12}  → left-align the "Date" column in a 12-character space
+    # {header[1]:<20}  → left-align "Description" in a 20-character space
+    # {header[2]:<10}  → left-align "Amount" in a 10-character space
+    # {header[3]:<10}  → left-align "Type" in a 10-character space
+    # {header[4]:<15}  → left-align "Category" in a 15-character space
+    # The "|" characters visually separate the columns like a table.
+    print(
+        f"{header[0]:<12} | {header[1]:<20} | {header[2]:<10} | {header[3]:<10} | {header[4]:<15}"
+    )
 
-# Print a horizontal line made of 75 dashes.
-# This creates a clean visual separator between the header and the transaction rows.
+    # Print a horizontal line made of 75 dashes.
+    # This creates a clean visual separator between the header and the transaction rows.
     print("-" * 75)
 
     # Loop through each transaction row (skipping the header at index 0) and print each transaction row
     for row in rows[1:]:
-    # Extract each column from the row for readability  
+        # Extract each column from the row for readability
         date = row[0]
         description = row[1]
         amount = row[2]
         t_type = row[3]
         category = row[4]
-# Prints a formatted transaction row in a clean, aligned table format to the screen.
-# Prints the transaction row with the same fixed-width formatting as the header.
-# f"{date:<12} = insert the value of date and left‑align the text inside a 12‑character wide space.
-# {description:<20} = insert description and left‑align in a 20‑character space.
-# €{amount:<9} = print a euro symbol before the amount and left‑align the amount in a 9‑character space.
-# {t_type:<10} = insert the transaction type (Income or Expense) and left‑align the amount in a 10‑character space.Gives it a fixed width so the next column lines up.
-# {category:<15}" = insert the category name and left‑align the amount in a 15‑character space.
-# | = a visual separator between columns, like a table.
-        print(f"{date:<12} | {description:<20} | €{amount:<9} | {t_type:<10} | {category:<15}")
+        # Prints a formatted transaction row in a clean, aligned table format to the screen.
+        # Prints the transaction row with the same fixed-width formatting as the header.
+        # f"{date:<12} = insert the value of date and left‑align the text inside a 12‑character wide space.
+        # {description:<20} = insert description and left‑align in a 20‑character space.
+        # €{amount:<9} = print a euro symbol before the amount and left‑align the amount in a 9‑character space.
+        # {t_type:<10} = insert the transaction type (Income or Expense) and left‑align the amount in a 10‑character space.Gives it a fixed width so the next column lines up.
+        # {category:<15}" = insert the category name and left‑align the amount in a 15‑character space.
+        # | = a visual separator between columns, like a table.
+        print(
+            f"{date:<12} | {description:<20} | €{amount:<9} | {t_type:<10} | {category:<15}"
+        )
 
     print()  # Print blank line at the end
 
+
 if __name__ == "__main__":
     view_transactions()
+
 
 def view_summary():
     """Display a summary of all transactions stored in transactions/FinTrack Google Sheets."""
@@ -177,19 +185,18 @@ def view_summary():
     # List to store all expense amounts (used for average + highest expense).
     expense_values = []
 
-
     # Loop through each transaction row and accumulate totals.
     for row in data_rows:
-        amount = float(row[2])     # Amount is in column 3
-        t_type = row[3]            # Type (Income/Expense) is in column 4
+        amount = float(row[2])  # Amount is in column 3
+        t_type = row[3]  # Type (Income/Expense) is in column 4
 
         if t_type == "Income":
             total_income = total_income + amount
-            income_count += 1       # Count income transactions
+            income_count += 1  # Count income transactions
         elif t_type == "Expense":
             total_expense = total_expense + amount
-            expense_count += 1     # Count expense transactions
-            expense_values.append(amount)  # Store for later calculations   
+            expense_count += 1  # Count expense transactions
+            expense_values.append(amount)  # Store for later calculations
 
     # Calculate the net balance (Income - Expense).
     net_balance = total_income - total_expense
@@ -200,44 +207,56 @@ def view_summary():
     print(f"Net Balance: €{net_balance:.2f}\n")
 
     # --- Additional Summary Metrics ---
+    # These metrics extend the summary with counts, averages, and category analysis.
 
-    # Total number of transactions recorded.
+    # Total number of transactions recorded (all rows except header).
     total_transactions = len(data_rows)
     print(f"Number of Transactions: {total_transactions}")
 
-    # Display how many were income and how many were expenses.
+    # Display how many transactions were income and how many were expenses.
     print(f"Income Count:           {income_count}")
     print(f"Expense Count:          {expense_count}")
 
-    
+    # Calculate average expense only if at least one expense exists.
+    if expense_values:
+        # Average = total of expenses divided by number of expense entries.
+        avg_expense = sum(expense_values) / len(expense_values)
+        print(f"Average Expense:        €{avg_expense:.2f}")
+    else:
+        # If no expenses exist, avoid division by zero.
+        print("Average Expense:        No expenses recorded.")
+
+    # Dictionary to store total spending per category.
     # Calculate which category has the highest total spending.
     # We only consider Expense rows for this calculation.
     category_totals = {}
 
+    # Loop through all transactions again to accumulate category totals for expenses.
     for row in data_rows:
-        amount = float(row[2])
-        t_type = row[3]
-        category = row[4]
+        amount = float(row[2])  # Amount value from the row/"Amount" column.
+        t_type = row[3]  # Transaction type (Income/Expense) from the row/"Type" column.
+        category = row[4]  # "Category" column.
 
         if t_type == "Expense":
-        # Add amount to the category total
+            # Add amount to the category total
             if category in category_totals:
                 category_totals[category] += amount
             else:
                 category_totals[category] = amount
 
-
-# If there are any expenses, find the category with the highest total.
+    # If there are any expenses, find the category with the highest total.
     if category_totals:
+        # Find the category with the largest total expense.
         top_category = max(category_totals, key=category_totals.get)
         top_amount = category_totals[top_category]
         print(f"Top Spending Category: {top_category} (€{top_amount:.2f})\n")
     else:
         print("No expenses recorded, so no top category.\n")
-        
+
+
 def main_menu():
     """Display the main menu and handle user choices."""
-    
+
     # Start an infinite loop so the menu keeps showing until the user chooses to exit
     while True:
         # Print the main menu options for the user
@@ -271,9 +290,10 @@ def main_menu():
         else:
             print("Invalid choice. Please enter a number between 1 and 4.")
 
+
 def main_menu():
     """Display the main menu and handle user choices."""
-    
+
     # Start an infinite loop so the menu keeps showing until the user chooses to exit
     while True:
         # Print the main menu options for the user
@@ -285,7 +305,7 @@ def main_menu():
 
         # Ask the user to enter a menu option and remove any extra spaces
         choice = input("Enter your choice (1-4): ").strip()
-        
+
         # If the user selects option 1, call the function to add a new transaction
         if choice == "1":
             add_transaction()
@@ -298,14 +318,10 @@ def main_menu():
             break
         else:
             print("Invalid choice. Please enter a number between 1 and 4.")
-        
 
 
 # -----------------------------
 # TEMPORARY TEST BLOCK
 # -----------------------------
 if __name__ == "__main__":
-     main_menu()
-
-
-
+    main_menu()
