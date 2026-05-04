@@ -150,9 +150,7 @@ Initially, multiple issues were identified, including long lines (E501), missing
 Each issue was corrected through iterative cleanup, line‑length reduction, whitespace removal, and consistent formatting.
 
 After applying all fixes, the project passed the CI Python Linter with zero errors, confirming full PEP8 compliance.
-
-![PEP8](https://img.shields.io/badge/Code%20Style-PEP8-brightgreen)
-
+screenshot here >
 <p align="center">
   <img src="https://img.shields.io/badge/Code%20Style-PEP8-brightgreen" alt="PEP8 Badge">
 </p>
