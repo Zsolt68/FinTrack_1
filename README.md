@@ -3,8 +3,8 @@
 FinTrack is a simple Python application that helps users track their personal
 income and spending. All data is stored in a Google Sheets document, and the program can:
 
-- View all transactions
 - Add a new transaction
+- View all transactions
 - View a simple financial summary
 
 This project was intentionally kept simple because it is my first Python
@@ -12,6 +12,32 @@ application. My goal was to demonstrate a clear understanding of Python basics,
 functions, loops, input validation, and working with external data using the
 gspread library.
 
+## 1. Project Overview
+FinTrack is a lightweight, terminal‑based finance tracker designed for users who want a simple way to:
+
+- log daily income and expenses
+
+- store data in the cloud
+
+- view transaction history
+
+- generate financial summaries
+
+- run the program anywhere (local or Heroku)
+
+The goal of the project is to demonstrate:
+
+- Python programming
+
+- data validation
+
+- Google Sheets API integration
+
+- modular code structure
+
+ -deployment to Heroku
+
+- clean documentation and testing
 ---
 
 ## Features
