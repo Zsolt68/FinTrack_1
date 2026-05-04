@@ -109,6 +109,32 @@ Displays a clean exit message when the program ends.
 
 ## Technologies Used
 
+## How to Use the Program
+
+- User needs to type in the python3 run.py command in the Terminal or Heroku console
+- When the program starts, users see:
+
+Starting FinTrack ... 
+
+- The Welcome banner is displayed.
+
+```
+====================================
+         Welcome to FinTrack
+   Your Personal Finance Tracker
+              v1.0
+====================================
+```
+- The main menu is displayed:
+1. Add Transaction
+2. View Transactions
+3. View Summary
+4. Exit
+Users interact by entering the number of the desired option.
+
+
+## Technologies Used
+
 - Python 3  
 - Google Sheets  
 - gspread library  
