@@ -46,7 +46,7 @@ Each test case includes the expected result and the actual result.
 
 | Test | Action | Expected Result | Actual Result | Pass |
 | --- | --- | --- | --- | --- |
-| 1 | Calculate totals | Correct totals displayed | ✔ |
+| 1 | Calculate totals | Correct totals displayed | ✔ |  | ✔ |
 | 2 | Calculate net balance | Income − Expense | ✔ |
 | 3 | Count transactions | Correct count | ✔ |
 | 4 | Average expense | Correct calculation | ✔ |
