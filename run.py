@@ -195,10 +195,6 @@ def view_transactions():
 # Run view_transactions only when this file is executed directly.
 
 
-if __name__ == "__main__":
-    view_transactions()
-
-
 def view_summary():
     # Display a summary of all transactions stored in transactions worksheet.
 
