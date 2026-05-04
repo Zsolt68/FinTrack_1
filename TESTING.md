@@ -19,17 +19,18 @@ Each test case includes the expected result and the actual result.
 
 ## 2. Add Transaction Feature
 
-| Test | Input | Expected Result | Actual Result | Pass |
-| --- | --- | --- | --- | --- |
-| 1 | Valid date | Accepted | As expected | ✔ |
-| 2 | Valid description | Accepted | As expected | ✔ |
-| 3 | Valid amount (``12.50``) | Saved as float | As expected | ✔ |
-| 4 | Invalid amount (``abc``) | Error message + return to menu | As expected | ✔ |
-| 5 | Type = ``Income`` | Accepted | As expected | ✔ |
-| 6 | Type = ``Expense`` | Accepted | As expected | ✔ |
-| 7 | Invalid type (``Food``) | Error message | As expected | ✔ |
-| 8 | Category text | Accepted | As expected | ✔ |
-| 9 | Entire row appended to Google Sheets | Row appears in sheet | ✔ |
+| Test | Input                                | Expected Result                     | Actual Result | Pass |
+|------|---------------------------------------|-------------------------------------|---------------|------|
+| 1    | Valid date                            | Accepted                            | As expected   | ✔    |
+| 2    | Valid description                     | Accepted                            | As expected   | ✔    |
+| 3    | Valid amount (`12.50`)                | Saved as float                      | As expected   | ✔    |
+| 4    | Invalid amount (`abc`)                | Error message + return to menu      | As expected   | ✔    |
+| 5    | Type = `Income`                       | Accepted                            | As expected   | ✔    |
+| 6    | Type = `Expense`                      | Accepted                            | As expected   | ✔    |
+| 7    | Invalid type (`Food`)                 | Error message                       | As expected   | ✔    |
+| 8    | Category text                         | Accepted                            | As expected   | ✔    |
+| 9    | Entire row appended to Google Sheets  | Row appears in sheet                | ✔             | ✔    |
+
 
 
 ## 3. View Transactions Feature
