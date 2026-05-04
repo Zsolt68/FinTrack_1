@@ -109,6 +109,10 @@ Displays a clean exit message when the program ends.
 
 ## How to Use the Program
 
+1. Install dependencies: pip install gspread google-auth
+2. Place your `creds.json` file in the project folder.
+3. Run the program: python3 run.py
+
 - User needs to type in the python3 run.py command in the Terminal or Heroku console
 - When the program starts, users see:
 
@@ -193,12 +197,89 @@ Insert flowchart image in here
 
 ---
 
-## How to Run
 
-1. Install dependencies: pip install gspread google-auth
-2. Place your `creds.json` file in the project folder.
-3. Run the program: python3 run.py
+## Data Model
+FinTrack uses a Google Sheet as its database.
 
+Each row contains:
+
+| Column | Field |
+| --- | --- |
+| A | Date |
+| B | Description |
+| C | Amount |
+| D | Type |
+| E | Category |
+
+The sheet is accessed using:
+
+gspread
+
+google.oauth2.service_account
+
+## Technologies Used
+
+- Python 3
+
+- Google Sheets API
+
+- gspread
+
+- Heroku
+
+- VS Code Terminal
+
+- Git & GitHub
+
+## Testing
+
+All testing is documented in TESTING.md.
+
+Testing includes:
+
+- manual feature testing
+
+- input validation
+
+- Google Sheets integration
+
+- Heroku deployment testing
+
+- PEP8 validation
+
+- bug fixes
+Heroku Deployment Steps
+
+The project passed the CI Python Linter with zero errors.
+
+## Deployment
+
+### Heroku Deployment Steps
+
+1. Create a new Heroku app
+2. Add buildpacks:
+       - heroku/python
+3. Add required files:
+
+        - requirements.txt
+         - Procfile
+   - runtime.txt
+
+4. Push code to GitHub
+5. In Heroku → Deploy tab → Manual Deploy → Deploy Branch
+6. App builds and runs automatically
+
+### Environment Variables
+Add the following config var:
+CREDS = <your service account JSON>
+
+## Credits 
+
+- Code Institute template for Google Sheets API setup
+- Love Sandwiches-Esential  Walkthrough Project for project structure guidance and coding.
+- Google Sheets API documentation
+- spread documentation  
+  
 
 ---
 
@@ -212,12 +293,13 @@ Insert flowchart image in here
 - Add data validation directly in Google Sheets
 - Add a Logs worksheet to track user actions
 - Add monthly or yearly reports
+- Export summary to PDF
+- Add monthly charts
+- Add a login system
+- Add categories dashboard
 
+
+## 
 ---
 
-## Credits
-
-- Python documentation  
-- gspread documentation  
-- Code Institute template for Google Sheets API setup and "Love Sandwiches" Walkthrough Project.
 
