@@ -70,15 +70,16 @@ Each test case includes the expected result and the actual result.
 
 ## 6. Heroku Deployment Testing
 
-| Test | Action | Expected Result | Actual Result | Pass |
-| --- | --- | --- | --- | --- |
-| 1 | App loads | Welcome banner appears | ✔ |
-| 2 | No auto‑running functions | No transactions shown on startup | ✔ |
-| 3 | Menu works | All options functional | ✔ |
-| 4 | Google Sheets connection | Data loads correctly | ✔ |
-| 5 | Add transaction | Row appears in live sheet | ✔ |
-| 6 | View transactions | Table displays correctly | ✔ |
-| 7 | Summary | Calculations correct | ✔ |
+| Test | Action                     | Expected Result                   | Actual Result | Pass |
+|------|-----------------------------|-----------------------------------|---------------|------|
+| 1    | App loads                   | Welcome banner appears            | ✔             | ✔    |
+| 2    | No auto‑running functions   | No transactions shown on startup  | ✔             | ✔    |
+| 3    | Menu works                  | All options functional            | ✔             | ✔    |
+| 4    | Google Sheets connection    | Data loads correctly              | ✔             | ✔    |
+| 5    | Add transaction             | Row appears in live sheet         | ✔             | ✔    |
+| 6    | View transactions           | Table displays correctly          | ✔             | ✔    |
+| 7    | Summary                     | Calculations correct              | ✔             | ✔    |
+
 
 
 ## 7. PEP8 / Linter Validation
