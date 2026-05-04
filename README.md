@@ -150,12 +150,13 @@ account. It reads and writes data to the **Transactions** worksheet.
 
 The code is structured into small, easy-to-understand functions:
 
-- `load_transactions()` – loads all data  
-- `view_transactions()` – prints transactions  
+- `clear_screen()` – Clear the terminal screen.
+- `loading_animation(message="Loading")` - Display a simple loading animation with a custom message. Shows the message with 1, 2, and 3 dots, then clears the screen.
+- `add_transaction()` – adds a new row to the Fintrack Google Sheets 
+- `view_transactions()` – Display all transactions stored in the 'transactions' worksheet 
 - `add_transaction()` – adds a new row  
-- `view_summary()` – calculates totals  
-- `show_menu()` – displays the menu  
-- `main()` – runs the program loop  
+- `view_summary()` – Displays a summary of all transactions stored in the "transactions" worksheet.  
+- `main_menu()` – Displays the main menu, handles user choices and runs the program loop.
 
 I focused on clarity and readability rather than complexity.
 
@@ -167,16 +168,21 @@ The program follows this simple flow:
 
 The FinTrack program follows a simple, linear flow:
 
-1. Start the program
-2. Load transactions from Google Sheets
-3. Display main menu
-4. User selects an option:
-   - View Transactions → Display all rows
-   - Add Transaction → Ask for input → Save to sheet
-   - View Summary → Calculate totals → Display results
-   - Exit → End program
-5. After completing an action, return to the menu
-6. Program ends when the user chooses Exit
+[Start]
+   ↓
+Display Welcome Banner
+   ↓
+Display Main Menu
+   ↓
+User Choice
+   ↓
+ ┌─────────────────────────────────────────────┐
+ │ If "1" → Add Transaction → Back to Menu     │
+ │ If "2" → View Transactions → Back to Menu   │
+ │ If "3" → View Summary → Back to Menu        │
+ │ If "4" → Show Exit Banner → End Program     │
+ │ Else → Show Error → Back to Menu            │
+ └─────────────────────────────────────────────┘
 
 This flow ensures the program is easy to use and follows a clear structure.  
 
