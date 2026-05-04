@@ -46,11 +46,13 @@ The goal of the project is to demonstrate:
 
 Displays a clean welcome message when the program starts.
 
+```
 ====================================
-Welcome to FinTrack
-Your Personal Finance Tracker
-v1.0
+         Welcome to FinTrack
+   Your Personal Finance Tracker
+              v1.0
 ====================================
+```
 
 ### 2. View Transactions
 Displays all transactions stored in the Google Sheet in a simple list format.
