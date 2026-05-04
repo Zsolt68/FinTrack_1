@@ -42,26 +42,64 @@ The goal of the project is to demonstrate:
 
 ## Features
 
-### 1. View Transactions
+### 1. Welcome banner
+
+Displays a clean welcome message when the program starts.
+
+====================================
+         Welcome to FinTrack
+   Your Personal Finance Tracker
+              v1.0
+====================================
+
+### 2. View Transactions
 Displays all transactions stored in the Google Sheet in a simple list format.
 
-### 2. Add Transaction
-Allows the user to enter:
+### 3. Add a New Transaction
+Users can add a new income or expense with:
 - Date  
 - Description  
 - Amount  
-- Type (Debit or Credit)  
+- Type (Income/Expense)  
 - Category  
 
-The new transaction is added directly to the Google Sheet.
+The new transaction or data is added directly to the FinTrack Google Sheet.
 
-### 3. View Summary
-Calculates:
-- Total Income  
-- Total Spending  
-- Net Balance  
+### 4. View All Transactions
+
+Displays all stored transactions in a clean, aligned table:
+- Date  
+- Description  
+- Amount  
+- Type  
+- Category  
 
 This gives the user a quick overview of their financial situation.
+
+### 5. Input Validation
+
+Prevents invalid entries such as:
+- non‑numeric amounts
+- invalid transaction types
+- empty fields
+
+### 6. Loading Animation & Screen Clear
+
+Improves user experience and readability.
+
+### 6. Loading Animation & Screen Clear
+
+Displays a clean exit message when the program ends.
+
+### 7. Exit Banner
+
+Displays a clean exit message when the program ends.
+
+====================================
+       Thank you for using
+             FinTrack
+          See you soon!
+====================================
 
 ---
 
