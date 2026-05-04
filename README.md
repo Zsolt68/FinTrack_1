@@ -168,6 +168,7 @@ The program follows this simple flow:
 
 The FinTrack program follows a simple, linear flow:
 
+```
 [Start]
    ↓
 Display Welcome Banner
@@ -183,6 +184,8 @@ User Choice
  │ If "4" → Show Exit Banner → End Program     │
  │ Else → Show Error → Back to Menu            │
  └─────────────────────────────────────────────┘
+```
+
 
 This flow ensures the program is easy to use and follows a clear structure.  
 
