@@ -35,7 +35,7 @@ The goal of the project is to demonstrate:
 
 - modular code structure
 
- -deployment to Heroku
+ - deployment to Heroku
 
 - clean documentation and testing
 ---
