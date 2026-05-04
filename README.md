@@ -97,11 +97,13 @@ Displays a clean exit message when the program ends.
 
 Displays a clean exit message when the program ends.
 
+```
 ====================================
        Thank you for using
              FinTrack
           See you soon!
 ====================================
+```
 
 ---
 
