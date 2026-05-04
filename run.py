@@ -192,8 +192,6 @@ def view_transactions():
 
         print()  # Print blank line at the end
 
-# Run view_transactions only when this file is executed directly.
-
 
 def view_summary():
     # Display a summary of all transactions stored in transactions worksheet.
