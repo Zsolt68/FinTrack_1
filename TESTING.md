@@ -6,13 +6,15 @@ All features were manually tested in the terminal (Gitpod) and on Heroku.
 Each test case includes the expected result and the actual result.
 
 ### 1.1 Main Menu Navigation
-Test	Action	Expected Result	Actual Result	Pass
-1	Start app	Welcome banner + main menu displayed	As expected	✔
-2	Enter 1	Add Transaction form appears	As expected	✔
-3	Enter 2	All transactions table displayed	As expected	✔
-4	Enter 3	Summary report displayed	As expected	✔
-5	Enter 4	Exit banner displayed and program ends	As expected	✔
-6	Enter invalid input (e.g., abc)	Error message shown	As expected	✔
+
+| Test | Action | Expected Result | Actual Result | Pass |
+| --- | --- | --- | --- | --- |
+| 1 | Start app | Welcome banner + main menu displayed | As expected | ✔ |
+| 2 | Enter ``1`` | Add Transaction form appears | As expected | ✔ |
+| 3 | Enter ``2`` | All transactions table displayed | As expected | ✔ |
+| 4 | Enter ``3`` | Summary report displayed | As expected | ✔ |
+| 5 | Enter ``4`` | Exit banner displayed and program ends | As expected | ✔ |
+| 6 | Enter invalid input (e.g., ``abc``) | Error message shown | As expected | ✔ |
 
 
 ## 2. Add Transaction Feature
