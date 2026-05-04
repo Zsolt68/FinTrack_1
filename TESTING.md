@@ -59,13 +59,14 @@ Each test case includes the expected result and the actual result.
 
 ## 5. Input Validation
 
-| Input | Expected Result | Actual Result | Pass |
-| --- | --- | --- | --- |
-| Empty input | Prompt again or error | ✔ |
-| Spaces only | Stripped and validated | ✔ |
-| Lowercase “income” | Converted to “Income” | ✔ |
-| Lowercase “expense” | Converted to “Expense” | ✔ |
-| Invalid menu choice | Error message | ✔ |
+| Input               | Expected Result            | Actual Result | Pass |
+|---------------------|----------------------------|---------------|------|
+| Empty input         | Prompt again or error      | ✔             | ✔    |
+| Spaces only         | Stripped and validated     | ✔             | ✔    |
+| Lowercase “income”  | Converted to “Income”      | ✔             | ✔    |
+| Lowercase “expense” | Converted to “Expense”     | ✔             | ✔    |
+| Invalid menu choice | Error message              | ✔             | ✔    |
+
 
 
 ## 6. Heroku Deployment Testing
