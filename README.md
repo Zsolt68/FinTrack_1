@@ -130,6 +130,7 @@ Starting FinTrack ...
 2. View Transactions
 3. View Summary
 4. Exit
+
 Users interact by entering the number of the desired option.
 
 
