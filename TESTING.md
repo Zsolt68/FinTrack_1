@@ -29,7 +29,7 @@ Each test case includes the expected result and the actual result.
 | 6    | Type = `Expense`                      | Accepted                            | As expected   | ✔    |
 | 7    | Invalid type (`Food`)                 | Error message                       | As expected   | ✔    |
 | 8    | Category text                         | Accepted                            | As expected   | ✔    |
-| 9    | Entire row appended to Google Sheets  | Row appears in sheet                | ✔             | ✔    |
+| 9    | Entire row appended to Google Sheets  | Row appears in sheet                | As expected   | ✔    |
 
 
 
