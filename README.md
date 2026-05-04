@@ -107,8 +107,6 @@ Displays a clean exit message when the program ends.
 
 ---
 
-## Technologies Used
-
 ## How to Use the Program
 
 - User needs to type in the python3 run.py command in the Terminal or Heroku console
@@ -139,7 +137,11 @@ Users interact by entering the number of the desired option.
 - Python 3  
 - Google Sheets  
 - gspread library  
-- Google Cloud Service Account  
+- Google Cloud Service Account
+- google-auth
+- google-auth-oauthlib
+- google-auth-httplib2
+- oauth2client
 
 ---
 
@@ -185,8 +187,6 @@ User Choice
  │ Else → Show Error → Back to Menu            │
  └─────────────────────────────────────────────┘
 ```
-
-
 This flow ensures the program is easy to use and follows a clear structure.  
 
 Insert flowchart image in here
