@@ -44,15 +44,16 @@ Each test case includes the expected result and the actual result.
 
 ## 4. Summary Report Feature
 
-| Test | Action | Expected Result | Actual Result | Pass |
-| --- | --- | --- | --- | --- |
-| 1 | Calculate totals | Correct totals displayed | ✔ |  | ✔ |
-| 2 | Calculate net balance | Income − Expense | ✔ |
-| 3 | Count transactions | Correct count | ✔ |
-| 4 | Average expense | Correct calculation | ✔ |
-| 5 | Highest expense | Correct value | ✔ |
-| 6 | Top spending category | Correct category | ✔ |
-| 7 | No expenses | Show “N/A” | ✔ |
+| Test | Action                 | Expected Result        | Actual Result | Pass |
+|------|------------------------|------------------------|----------------|------|
+| 1    | Calculate totals       | Correct totals displayed | ✔            | ✔    |
+| 2    | Calculate net balance  | Income − Expense       | ✔            | ✔    |
+| 3    | Count transactions     | Correct count          | ✔            | ✔    |
+| 4    | Average expense        | Correct calculation    | ✔            | ✔    |
+| 5    | Highest expense        | Correct value          | ✔            | ✔    |
+| 6    | Top spending category  | Correct category       | ✔            | ✔    |
+| 7    | No expenses            | Show “N/A”             | ✔            | ✔    |
+
 
 
 ## 5. Input Validation
